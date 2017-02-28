@@ -3,4 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def rankings
+  	Girl.all.map{|x| { id: x.id, name: x.name, rank: x.rank(self) } }.sort_by{|x| x[:rank] == 0 ? 99999 : x[:rank] }
+  end
 end
