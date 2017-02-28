@@ -1,24 +1,50 @@
-# README
+# Introduction
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to the HouseCare Programming Test!
 
-Things you may want to cover:
+This website is a simple website to rank girls. People can create an account, login and change the ranks of the girls according to whom they like the most.
 
-* Ruby version
+# Getting Started
 
-* System dependencies
+Use Ruby 2.2 (we recommend using RVM to install 2.2 for development)
 
-* Configuration
+Use Postgres (if you are on a Mac, just use Postgres.app and you should be set)
 
-* Database creation
+Fork this repository
 
-* Database initialization
+Run the following commands to set up
 
-* How to run the test suite
+```
+git clone git@github.com:[your_username]/railstest
+cd railstest
+bundle install
+rake db:create
+rake db:migrate
+rake db:seed # this will seed the base with random best girl values
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Run the following command to start the server
 
-* Deployment instructions
+```
+bundle exec rails s
+```
 
-* ...
+You should see the website on http://localhost:3000.
+
+# The Problem
+
+When you see the front page, you will see a `##Display best girl ranking here:##`. Please implement this view.
+
+This view needs to display the overall (global) ranking for all the girls according to the rankings set by every user, so you will need to implement the calculation and display the result on the front page.
+
+Make a pull request with your modifications.
+
+# Extra Credit
+
+There are issues with the code that allows people to set their best girl. Find out what they are and fix them.
+
+There are many other problems with the site.
+
+# TL;DR
+
+Ruby is best girl anyway.
