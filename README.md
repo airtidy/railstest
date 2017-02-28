@@ -35,7 +35,7 @@ You should see the website on http://localhost:3000.
 
 When you see the front page, you will see a `##Display best girl ranking here:##`. Please implement this view.
 
-This view needs to display the overall (global) ranking for all the girls according to the rankings set by every user, so you will need to implement the calculation and display the result on the front page.
+This view needs to display the overall (global) ranking for all the girls according to the rankings set by every user, so you will need to implement the calculation and display the result on the front page. (Make sure to write tests too!)
 
 Make a pull request with your modifications.
 
@@ -43,7 +43,7 @@ Make a pull request with your modifications.
 
 There are issues with the code that allows people to set their best girl. Find out what they are and fix them.
 
-There are many other problems with the site.
+There are many other problems with the site, you do not need to fix them but spotting them would be really nice.
 
 # TL;DR
 
