@@ -16,22 +16,22 @@ class RankingController < ApplicationController
       # 3. girl is at bottom and going down (cannot go)
       # 4. girl is changing rank
 
-      ranking = Ranking.where(girl_id: girl_id, user: current_user).first
+      ranking = current_user.rankings.where(girl_id: girl_id).first
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Girl.all.count
-        rank = Ranking.where(user: current_user).count
+        rank = current_user.rankings.count
         ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
 
       elsif ranking.rank == 1 && direction == "up"
 
-      elsif ranking.rank == Ranking.where(user: current_user).count && direction == "down"
+      elsif ranking.rank == current_user.rankings.count && direction == "down"
 
       else
-        current = Ranking.where(user: current_user, girl_id: girl_id).first
+        current = current_user.rankings.where(girl_id: girl_id).first
 
         if direction == "up"
           # swap with upper ranker
-          upper = Ranking.where(user: current_user, rank: ranking.rank.to_i - 1).first
+          upper = current_user.rankings.where(rank: ranking.rank.to_i - 1).first
           upper.rank = current.rank
           current.rank = current.rank - 1
           upper.save!
@@ -39,7 +39,7 @@ class RankingController < ApplicationController
 
         elsif direction == "down"
           # swap with lower ranker
-          lower = Ranking.where(user: current_user, rank: ranking.rank.to_i + 1).first
+          lower = current_user.rankings.where(rank: ranking.rank.to_i + 1).first
           lower.rank = current.rank
           current.rank = current.rank + 1
           lower.save!

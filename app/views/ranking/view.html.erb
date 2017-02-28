@@ -9,7 +9,7 @@
 		<th>Move Down</th>
 	</tr>
 
-	<% current_user.rankings.each do |girl| %>
+	<% current_user.ranking_info.each do |girl| %>
 		<tr>
 			<td><%= girl[:name] %></td>
 			<td><%= girl[:rank] == 0 ? "?" : girl[:rank] %></td>
