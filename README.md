@@ -39,6 +39,22 @@ This view needs to display the overall (global) ranking for all the girls accord
 
 Make a pull request with your modifications.
 
+# Job Application
+
+As part of your job application please provide a resume (preferably text or a URL to your resume) with your contact details (i.e. phone number and e-mail address) and use `encrypt.sh` to encrypt it before checking it in. This program will encrypt a file and add a `.enc` extension to the end of it to indicate that it is encrypted.
+
+Example: 
+
+```
+sh encrypt.sh message
+git add message.enc
+git commit -m "Message for job application"
+```
+
+** PLEASE DON'T CHECK IN YOUR PERSONAL INFO UNENCRYPTED **
+
+If you are uncomfortable with this then please e-mail your job application to david アット airtidy.com and let us know your github username.
+
 # Extra Credit
 
 There are issues with the code that allows people to set their best girl. Find out what they are and fix them.
