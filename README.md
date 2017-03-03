@@ -15,7 +15,7 @@ Fork this repository
 Run the following commands to set up
 
 ```
-git clone git@github.com:airtidy/railstest
+git clone git@github.com:[your_username]/railstest
 cd railstest
 bundle install
 rake db:create
