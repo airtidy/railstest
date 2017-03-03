@@ -3,7 +3,7 @@ EphemeralPrivateKey=$(openssl ecparam -genkey -param_enc explicit -name secp256k
 PrivateKeyBuffer="$(mktemp)"
 PeerPublicKey="submitkey.pub"
 PlainTextFile="$1"
-EphemeralPublicKeyFile="temp.pub"
+EphemeralPublicKeyFile="$1.enc.pub"
 CipherTextFile="$1.enc"
 MACFile="temp.mac"
 echo -n "$EphemeralPrivateKey" > $PrivateKeyBuffer

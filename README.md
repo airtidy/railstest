@@ -41,13 +41,14 @@ Make a pull request with your modifications.
 
 # Job Application
 
-As part of your job application please provide a resume (preferably text or a URL to your resume) with your contact details (i.e. phone number and e-mail address) and use `encrypt.sh` to encrypt it before checking it in. This program will encrypt a file and add a `.enc` extension to the end of it to indicate that it is encrypted.
+As part of your job application please provide a resume (preferably text or a URL to your resume) with your contact details (i.e. phone number and e-mail address) and use `encrypt.sh` to encrypt it before checking it in. This program will encrypt a file and add a `.enc` extension to the end of it to indicate that it is encrypted. Please also check in the corresponding file with the `.enc.pub` extension.
 
 Example: 
 
 ```
 sh encrypt.sh message
 git add message.enc
+git add message.enc.pub
 git commit -m "Message for job application"
 ```
 
