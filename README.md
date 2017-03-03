@@ -2,7 +2,7 @@
 
 Welcome to the HouseCare Programming Test!
 
-This website is a simple website to rank girls. People can create an account, login and change the ranks of the girls according to whom they like the most.
+This website is a simple website to rank girls from the hit anime 'Love Live! School Idol Project.' People can create an account, login and change the ranks of the girls according to whom they like the most.
 
 # Getting Started
 
@@ -15,7 +15,7 @@ Fork this repository
 Run the following commands to set up
 
 ```
-git clone git@github.com:[your_username]/railstest
+git clone git@github.com:airtidy/railstest
 cd railstest
 bundle install
 rake db:create
