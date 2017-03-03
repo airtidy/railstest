@@ -6,15 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Girl.create(name: "Kurosawa Ruby", age: 15)
-Girl.create(name: "Watanabe You", age: 17)
-Girl.create(name: "Takami Chika", age: 16)
 Girl.create(name: "Kurosawa Dia", age: 17)
-Girl.create(name: "Kunikida Hanamaru", age: 15)
-Girl.create(name: "Matsuura Kanan", age: 18)
-Girl.create(name: "Tsushima Yoshiko", age: 16)
+Girl.create(name: "Matsuura Kanan", age: 17)
 Girl.create(name: "Ohara Mari", age: 18)
-Girl.create(name: "Sakurauchi Riko", age: 15)
+
+Girl.create(name: "Watanabe You", age: 17)
+Girl.create(name: "Takami Chika", age: 17)
+Girl.create(name: "Sakurauchi Riko", age: 17)
+
+Girl.create(name: "Kunikida Hanamaru", age: 15)
+Girl.create(name: "Kurosawa Ruby", age: 16)
+Girl.create(name: "Tsushima Yoshiko", age: 16)
 
 for i in 1..30 do
 	user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
