@@ -46,6 +46,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
+  gem "capybara"
+  gem "guard-rspec"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -58,3 +60,5 @@ gem 'rails_admin', '~> 1.0'
 gem 'faker'
 
 gem "factory_girl_rails", "~> 4.0"
+
+
