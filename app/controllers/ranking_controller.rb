@@ -20,7 +20,8 @@ class RankingController < ApplicationController
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Girl.all.count
         rank = current_user.rankings.count
-        ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
+        puts "rank: #{rank}"
+        ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank + 1)
 
       elsif ranking.rank == 1 && direction == "up"
 

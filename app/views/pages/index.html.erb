@@ -6,4 +6,19 @@
 <% end %>
 
 <p> Best girls are: </p>
-<p> ##Display best girl ranking here:## </p>
+
+<table>
+	<tr>
+		<th>Rank</th>
+		<th>Girl Name</th>
+		<th>TotalScore</th>
+	</tr>
+
+	<% (0..Girl.all.count-1).each do |i| %>
+		<tr>
+			<td><%= i+1 %></td>
+			<td><%= @resultSet[i][1][:name] %></td>
+			<td><%= @resultSet[i][1][:score] %></td>
+		</tr>
+	<% end %>
+</table>
