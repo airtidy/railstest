@@ -19,12 +19,25 @@ class RankingController < ApplicationController
       ranking = current_user.rankings.where(girl_id: girl_id).first
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Girl.all.count
-        rank = current_user.rankings.count
-        ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
+        ###
+        ### Here, when a new user is created, the current_user.rankings collection is empty
+        ### The problem was that when a new user tried to rank he created an ranking of 0
+        ### So the count gave 9, but the valid rankings were 8 (one was 0).
+        ###
+        if !current_user.rankings.exists?
+          #if the collection is empty, give the rank of 1
+          ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: 1)
+        else
+          ### We add plus one to the count to make it work
+          rank = current_user.rankings.count+1
+          ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
+        end
 
       elsif ranking.rank == 1 && direction == "up"
 
+
       elsif ranking.rank == current_user.rankings.count && direction == "down"
+
 
       else
         current = current_user.rankings.where(girl_id: girl_id).first

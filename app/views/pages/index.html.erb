@@ -5,5 +5,17 @@
 
 <% end %>
 
-<p> Best girls are: </p>
-<p> ##Display best girl ranking here:## </p>
+<br>
+<% if !current_user %>
+	<p>Login to see the global rankings list.</p>
+<% else %>
+	<p> Best girls are: </p>
+	<% Girl.all.order(average_ranking: :ASC).each do |girl| %>
+	<table>
+		<th></th>
+		<th></th>
+	<td><%= girl[:name]%><td>
+	<td>AVG Rank: <%= girl[:average_ranking].round(2)%><td>
+	</table>
+	<%end%>
+<% end %>
