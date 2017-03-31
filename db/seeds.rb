@@ -24,5 +24,10 @@ for i in 1..30 do
 	rankings = (1..9).to_a.shuffle
 	Girl.all.each do |girl|
 		Ranking.create(girl: girl, user: user, rank: rankings[girl.id-1])
+		###
+		###I'm adding this as we need to update the average_ranking after seeding
+		###Otherwise it will be nil for all girls
+		girl.update_average_ranking
 	end
+
 end
