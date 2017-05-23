@@ -28,6 +28,9 @@ RSpec.describe RankingController, type: :controller do
 
       expect( user.rankings.count ).to eq(1)
 
+      # test rank value
+      expect( user.rankings[0][:rank] ).to eq(1)
+
     end
   end
 
