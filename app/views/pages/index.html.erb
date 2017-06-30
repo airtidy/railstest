@@ -6,4 +6,9 @@
 <% end %>
 
 <p> Best girls are: </p>
-<p> ##Display best girl ranking here:## </p>
+
+<ol>
+  <%- @global_ranking.each do |gr| %>
+      <li><%= gr.girl.name %> – <strong><%= gr.rank %></strong></li>
+  <% end %>
+</ol>
