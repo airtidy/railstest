@@ -154,6 +154,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    rb-readline (0.5.4)
     remotipart (1.3.1)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
@@ -230,6 +231,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (>= 5.0.0.rc2, < 5.1)
   rails_admin (~> 1.0)
+  rb-readline
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   spring
@@ -240,4 +242,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
