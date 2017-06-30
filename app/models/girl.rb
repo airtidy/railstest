@@ -1,6 +1,8 @@
 class Girl < ApplicationRecord
+  has_many :rankings
+
 	def rank(user)
-		ranking = Ranking.where(user: user, girl: self).first
+		ranking = rankings.where(user: user).first
 		if !ranking
 			0
 		else
