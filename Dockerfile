@@ -11,16 +11,17 @@ RUN apt-get -y update \
     && /bin/bash -c "source /etc/profile.d/rvm.sh \
        && rvm install 2.4.0 \
        && rvm use 2.4.0 --default" \
-    && gem install bundler rails
-
-WORKDIR /src
-ADD . .
+    && gem install bundler rails \
+    && rm -rf /var/cache/apt /var/lib/apt/lists/*
 
 # init postgres
 USER postgres
 RUN /etc/init.d/postgresql start \
     && psql -c "create user root with superuser;" \
     && createdb -O root root
+
+WORKDIR /src
+ADD . .
 
 # init application
 EXPOSE 3000
@@ -31,4 +32,4 @@ RUN /etc/init.d/postgresql start \
     && rake db:migrate \
     && rake db:seed
 
-CMD ["/etc/init.d/postgresql", "start", "&&", "bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+ENTRYPOINT /etc/init.d/postgresql start && bundle exec rails server -b 0.0.0.0

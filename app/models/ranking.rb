@@ -5,6 +5,8 @@ class Ranking < ApplicationRecord
   validates_uniqueness_of :girl_id, scope: :user_id
 
   def self.ladder
-    Ranking.joins(:girl).select("girls.name, sum(rankings.rank) as rank").group("girls.name").order("rank desc")
+    Ranking.joins(:girl).select("girls.name, row_number() over(order by sum(rankings.rank) asc) rank")
+           .group("girls.name")
+           .order("rank")
   end
 end
