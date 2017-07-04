@@ -8,6 +8,9 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
+  username: <%= ENV['POSTGRESQL_USER']           || 'root'                                   %>
+  password: <%= ENV['POSTGRESQL_PASSWORD']           || 'root'                                   %>
+  host: localhost
 
 development:
   <<: *default
