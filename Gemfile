@@ -58,3 +58,5 @@ gem 'rails_admin', '~> 1.0'
 gem 'faker'
 
 gem "factory_girl_rails", "~> 4.0"
+
+gem 'dotenv-rails'

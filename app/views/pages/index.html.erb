@@ -6,4 +6,29 @@
 <% end %>
 
 <p> Best girls are: </p>
-<p> ##Display best girl ranking here:## </p>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th></th>
+		<th>Global Rank</th>
+		<th></th>
+		<th>Sum of Absolute Ranks</th>
+		<th></th>
+		<th>Sum of Relative Ranks</th>
+	</tr>
+
+	<% Girl.all.order(global_sum_absolute_ranks: :asc).each_with_index do |girl, index| %>
+		<tr>
+			<td><%= girl[:name] %></td>
+			<td></td>
+			<td><%= index + 1 %></td>
+			<td></td>
+			<td><%= girl[:global_sum_absolute_ranks] %></td>
+			<td></td>
+			<td><%= girl[:global_sum_relative_ranks] %></td>
+
+		</tr>
+	<% end %>
+
+</table>
