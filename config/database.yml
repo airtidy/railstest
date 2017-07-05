@@ -8,6 +8,9 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
+  host: 127.0.0.1
+  username: postgres
+  password: postgres
 
 development:
   <<: *default
@@ -23,6 +26,3 @@ test:
 production:
   <<: *default
   database: railstest_production
-
-
-

@@ -55,5 +55,9 @@ class RankingController < ApplicationController
   end
 
   def view
+    @ranking_info = current_user.ranking_info
+    @girl_count = Girl.count
+    @not_all_ranked = @ranking_info.select {|e| e[:rank] == 0}.length > 1
+    @is_last_not_ranked = @ranking_info.uniq {|e| e[:rank] }.length == @girl_count
   end
 end

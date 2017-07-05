@@ -9,11 +9,10 @@
 		<th>Move Down</th>
 	</tr>
 
-	<% current_user.ranking_info.each do |girl| %>
+	<% @ranking_info.each do |girl| %>
 		<tr>
 			<td><%= girl[:name] %></td>
-			<td><%= girl[:rank] == 0 ? "?" : girl[:rank] %></td>
-
+			<td><%= (girl[:rank] == 0 and @not_all_ranked) ? "?" : (girl[:rank] == 0 and @is_last_not_ranked) ? @girl_count : girl[:rank] %></td>
 			<td><%= link_to "Up", ranking_edit_path(girl: girl[:id], direction: "up"), method: :post %></td>
 			<td><%= link_to "Down", ranking_edit_path(girl: girl[:id], direction: "down"), method: :post %></td>
 		</tr>

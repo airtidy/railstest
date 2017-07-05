@@ -4,7 +4,7 @@ class Girl < ApplicationRecord
 		if !ranking
 			0
 		else
-			ranking.rank
+			ranking.rank+1
 		end
 	end
 end
