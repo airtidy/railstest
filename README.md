@@ -65,3 +65,5 @@ There are many other problems with the site, you do not need to fix them but spo
 # TL;DR
 
 Ruby is best girl anyway.
+
+![ruby_on_rails](https://user-images.githubusercontent.com/874280/27848793-d4c76a40-6182-11e7-832a-116ca89ea40d.png)
