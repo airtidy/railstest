@@ -26,3 +26,7 @@ for i in 1..30 do
 		Ranking.create(girl: girl, user: user, rank: rankings[girl.id-1])
 	end
 end
+
+User.all.each do |user|
+	user.update_absolute_ranks_of_ranking
+end

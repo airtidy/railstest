@@ -18,16 +18,19 @@ ActiveRecord::Schema.define(version: 20170227082838) do
   create_table "girls", force: :cascade do |t|
     t.string   "name"
     t.integer  "age"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "global_sum_absolute_ranks", default: 0.0
+    t.integer  "global_sum_relative_ranks", default: 0
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
   create_table "rankings", force: :cascade do |t|
     t.integer  "girl_id"
     t.integer  "user_id"
-    t.integer  "rank"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "rank",          default: 0
+    t.float    "absolute_rank", default: 0.0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["girl_id"], name: "index_rankings_on_girl_id", using: :btree
     t.index ["user_id"], name: "index_rankings_on_user_id", using: :btree
   end

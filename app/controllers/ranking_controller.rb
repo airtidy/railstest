@@ -7,7 +7,8 @@ class RankingController < ApplicationController
 
       girl_id = params[:girl]
       direction = params[:direction]
-
+      # puts girl_id
+      # puts direction
       return if !girl_id || !direction
 
       # cases:
@@ -19,7 +20,8 @@ class RankingController < ApplicationController
       ranking = current_user.rankings.where(girl_id: girl_id).first
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Girl.all.count
-        rank = current_user.rankings.count
+        
+        rank = current_user.rankings.count + 1
         ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
 
       elsif ranking.rank == 1 && direction == "up"
@@ -50,7 +52,11 @@ class RankingController < ApplicationController
 
       end
 
+      #UPDATE ABSOLUTE RANKS FOR ALL RANKINGS FOR THIS USER
+      current_user.update_absolute_ranks_of_ranking
+
       redirect_to :ranking_view
+      
     end
   end
 
