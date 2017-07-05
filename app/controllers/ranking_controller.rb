@@ -3,12 +3,21 @@ class RankingController < ApplicationController
   before_action :authenticate_user!
 
   def edit
+    ## This might be more RESTful
+    ## method: :put in the view would do the trick
+
     if request.post?
 
       girl_id = params[:girl]
       direction = params[:direction]
 
       return if !girl_id || !direction
+
+      ## The main problem with this code is 7 IFs
+
+      ## The following can be moved to a service/model
+      ## and replaced with a single call
+      ## Fat model/skinny controller etc
 
       # cases:
       # 1. girl is not ranked
@@ -19,7 +28,8 @@ class RankingController < ApplicationController
       ranking = current_user.rankings.where(girl_id: girl_id).first
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Girl.all.count
-        rank = current_user.rankings.count
+        # The last one is always ? in the view
+        rank = 1 + current_user.rankings.count
         ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
 
       elsif ranking.rank == 1 && direction == "up"
@@ -44,10 +54,7 @@ class RankingController < ApplicationController
           current.rank = current.rank + 1
           lower.save!
           current.save!
-
         end
-
-
       end
 
       redirect_to :ranking_view
