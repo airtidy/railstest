@@ -1,9 +1,20 @@
 <h1>Best girl site</h1>
 
-<% if !current_user %>
+<% unless current_user %>
 	<p>Please <%= link_to "login", new_user_session_path %> and rank your best girl!</p>
-
 <% end %>
 
+
 <p> Best girls are: </p>
-<p> ##Display best girl ranking here:## </p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Rank</th>
+  </tr>
+<% Ranking.ladder.each do |girl| %>
+    <tr>
+      <td><%= girl[:name] %></td>
+      <td><%= girl[:rank] == 0 ? "?" : girl[:rank] %></td>
+    </tr>
+<% end %>
+</table>

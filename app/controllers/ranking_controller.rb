@@ -19,8 +19,9 @@ class RankingController < ApplicationController
       ranking = current_user.rankings.where(girl_id: girl_id).first
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Girl.all.count
-        rank = current_user.rankings.count
-        ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
+        # plus one because the count start from 0 if no one is ranked
+        rank = current_user.rankings.count + 1
+        Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
 
       elsif ranking.rank == 1 && direction == "up"
 
@@ -38,12 +39,14 @@ class RankingController < ApplicationController
           current.save!
 
         elsif direction == "down"
-          # swap with lower ranker
+          # swap with lower ranker if lower ranker has been ranked.
           lower = current_user.rankings.where(rank: ranking.rank.to_i + 1).first
-          lower.rank = current.rank
-          current.rank = current.rank + 1
-          lower.save!
-          current.save!
+          if lower != nil
+            lower.rank = current.rank
+            current.rank = current.rank + 1
+            lower.save!
+            current.save!
+          end
 
         end
 

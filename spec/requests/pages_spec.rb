@@ -6,5 +6,10 @@ RSpec.describe "Pages", type: :request do
       get root_path
       expect(response).to have_http_status(200)
     end
+
+     it "has ranking ladderboard" do
+       get root_path
+       expect(response.body).to include("table", "rank")
+     end
   end
 end

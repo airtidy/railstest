@@ -6,30 +6,42 @@ This website is a simple website to rank girls from the hit anime 'Love Live! Sc
 
 # Getting Started
 
-Use Ruby 2.2 (we recommend using RVM to install 2.2 for development)
+There are two ways to run this app:
+- Docker
+  
+  Run these command
+  ```
+  docker build -t housecare:test .
+  docker run -dp 3000:3000 housecare:test
+   ``` 
+  If one uses docker toolbox, make sure the port 3000 is forwarded from the guest to host correctly. 
 
-Use Postgres (if you are on a Mac, just use Postgres.app and you should be set)
+- Build from Source
+  
+  Use Ruby 2.2 (we recommend using RVM to install 2.2 for development)
 
-Fork this repository
+  Use Postgres (if you are on a Mac, just use Postgres.app and you should be set)
 
-Run the following commands to set up
+  Fork this repository
 
-```
-git clone git@github.com:[your_username]/railstest
-cd railstest
-bundle install
-rake db:create
-rake db:migrate
-rake db:seed # this will seed the base with random best girl values
-```
+  Run the following commands to set up
 
-Run the following command to start the server
+  ```
+  git clone git@github.com:[your_username]/railstest
+  cd railstest
+  bundle install
+  rake db:create
+  rake db:migrate
+  rake db:seed # this will seed the base with random best girl values
+  ```
 
-```
-bundle exec rails s
-```
+  Run the following command to start the server
 
-You should see the website on http://localhost:3000.
+  ```
+  bundle exec rails s
+  ```
+
+Either way. You should see the website on http://localhost:3000.
 
 # The Problem
 
