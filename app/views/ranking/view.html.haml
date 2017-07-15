@@ -1,0 +1,13 @@
+%h1 Your best girl rankings
+%table
+  %tr
+    %th Name
+    %th Rank
+    %th Move Up
+    %th Move Down
+  - current_user.ranking_info.each do |girl|
+    %tr
+      %td= girl[:name]
+      %td= girl[:rank] == 0 ? "?" : girl[:rank]
+      %td= link_to "Up", ranking_edit_path(girl: girl[:id], direction: "up"), method: :post
+      %td= link_to "Down", ranking_edit_path(girl: girl[:id], direction: "down"), method: :post

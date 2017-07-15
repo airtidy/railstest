@@ -1,0 +1,13 @@
+%h1 Best girl site
+- if !current_user
+  %p
+    Please #{link_to "login", new_user_session_path} and rank your best girl!
+%p Best girls are:
+%table
+  %tr
+    %th Rank
+    %th Name
+  - @girls.each_with_index do |girl, index|
+    %tr
+      %td= index + 1
+      %td= girl[:name]
