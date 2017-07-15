@@ -29,6 +29,18 @@ RSpec.describe RankingController, type: :controller do
       expect( user.rankings.count ).to eq(1)
 
     end
+
+    it "ranks the the first girl to be ranked by a new user with 1" do
+      girl = FactoryGirl.create(:girl)
+      user = FactoryGirl.create(:user)
+      sign_in user
+
+      post :edit, params: {girl: girl.id, direction: "up" }
+      expect(response).to have_http_status(:found)
+
+      expect( user.rankings.count ).to eq(1)
+      expect( girl.rank(user)).to eq(1)
+    end
   end
 
 
