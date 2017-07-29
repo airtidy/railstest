@@ -55,5 +55,6 @@ class RankingController < ApplicationController
   end
 
   def view
+    @ranking_info = current_user.ranking_info
   end
 end
