@@ -25,6 +25,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         gem install bundler
         usermod -aG rvm vagrant
         sudo -u postgres psql -c "CREATE ROLE vagrant WITH LOGIN PASSWORD 'vagrant'; ALTER USER vagrant CREATEDB"
-        su - vagrant bin/sh -c "cd /vagrant && rvm use 2.2 && bundle install && bundle exec rake db:create db:migrate"
+        su - vagrant bin/sh -c "cd /vagrant && rvm use 2.2 && bundle install && bundle exec rake db:create db:migrate db:seed"
     SHELL
 end
