@@ -6,4 +6,15 @@
 <% end %>
 
 <p> Best girls are: </p>
-<p> ##Display best girl ranking here:## </p>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Rank</th>
+	</tr>
+
+<% @rankings.each_index do |i| %>
+	<tr>
+		<td><%= @rankings[i][:name] %></td><td><%= i+1 %></td>
+	</tr>
+<% end %>
