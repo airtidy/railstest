@@ -26,3 +26,5 @@ for i in 1..30 do
 		Ranking.create(girl: girl, user: user, rank: rankings[girl.id-1])
 	end
 end
+
+User.create(email: "nospam@safetymail.info", password: "12345678")
