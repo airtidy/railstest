@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+.navbutton {
+  background-color: #555555;
+  font-family: Arial;
+  font-size: 120%;
+  color: white;
+  padding: 6px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.maindiv {
+  margin-left: 40px;
+}
