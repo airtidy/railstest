@@ -7,7 +7,7 @@
       <th>Rank</th>
     </tr>
     <% current_user.ranking_info.each.with_index do |girl, line| %>
-      <% if line == current_user.rankings.count   # Put separator between ranked and unranked girls. %>
+      <% if line == @rankings_count   # Put separator between ranked and unranked girls. %>
         <tr><td><hr></td></tr>
       <% end %>
       <% rank = girl[:rank] %>
@@ -19,7 +19,7 @@
         <% else %>
           <td></td>
         <% end %>
-        <% if rank > 0 && rank < current_user.rankings.count %>
+        <% if rank > 0 && rank < @rankings_count %>
           <td><%= link_to "Down", ranking_edit_path(girl: girl[:id], direction: "down"), method: :post, class: 'movebutton' %></td>
         <% else %>
           <td></td>

@@ -47,7 +47,6 @@ class RankingController < ApplicationController
 
         end
 
-
       end
 
       redirect_to :ranking_view
@@ -55,5 +54,6 @@ class RankingController < ApplicationController
   end
 
   def view
+    @rankings_count = current_user.rankings.count
   end
 end
