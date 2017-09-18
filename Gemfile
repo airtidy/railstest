@@ -46,6 +46,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
+  gem 'pry'
+  gem 'awesome_print'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
