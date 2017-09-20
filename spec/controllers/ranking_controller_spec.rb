@@ -30,6 +30,15 @@ RSpec.describe RankingController, type: :controller do
 
     end
   end
-
-
+  
+  it "returns a list of ranked waifus" do 
+	girls = []
+	girls.push(FactoryGirl.create(:girl))
+	girls.push(FactoryGirl.create(:girl))
+	girls.push(FactoryGirl.create(:girl))
+	girls.push(FactoryGirl.create(:girl))
+	girls.push(FactoryGirl.create(:girl))
+			
+	expect(RankingController.waifu_ranks(girls).count).to eq(5)
+  end
 end
