@@ -5,5 +5,23 @@
 
 <% end %>
 
-<p> Best girls are: </p>
-<p> ##Display best girl ranking here:## </p>
+
+<% rankings = Ranking.select('girl_id, sum(rank) as rank').group('girl_id').order('rank asc') %>
+<h1>Best Girl: <%= Girl.where(id: rankings.first.girl_id).first.name %></h1>
+<p> The rankings are: </p>
+<table>
+<% rankings.each do |girl| %>
+	<tr>
+		<% proc_girl = Girl.where(id: girl[:girl_id]).first %>
+		<% if proc_girl %>
+			<td><%= proc_girl.name %></td>
+
+		<% else %> 
+			<td>Error.</td>
+
+		<% end %> 
+	</tr>
+	
+<% end %> 
+
+</table>
