@@ -19,8 +19,18 @@ class RankingController < ApplicationController
       ranking = current_user.rankings.where(girl_id: girl_id).first
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Girl.all.count
-        rank = current_user.rankings.count
-        ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
+        # if count is 0, rank is 0. fixes last selected raburaibu break
+        rank = current_user.rankings.count+1
+        # if ranking doesn't exist, create
+        if ranking == nil
+          ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
+
+        # if ranking exists but with invalid rank, set to after last rank
+        else
+          ranking.rank = rank
+          ranking.save!
+
+        end
 
       elsif ranking.rank == 1 && direction == "up"
 
