@@ -6,4 +6,15 @@
 <% end %>
 
 <p> Best girls are: </p>
-<p> ##Display best girl ranking here:## </p>
+<p> 
+	<pre>
+		<td> [Girl Name, Global Rank] </td>
+	</pre>
+</p>
+<pre>
+	<% @girlArray.each do |girl_name|%>
+		<td> <%= girl_name.inspect %> </td> 
+	<% end %>
+</pre>
+
+
