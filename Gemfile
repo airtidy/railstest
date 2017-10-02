@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Use sqlite3 as the database for Active Record
+gem 'sqlite3'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
@@ -58,3 +59,5 @@ gem 'rails_admin', '~> 1.0'
 gem 'faker'
 
 gem "factory_girl_rails", "~> 4.0"
+
+gem 'wdm', '>=0.1.0'
