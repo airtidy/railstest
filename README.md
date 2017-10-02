@@ -54,7 +54,7 @@ git commit -m "Message for job application"
 
 ** PLEASE DON'T CHECK IN YOUR PERSONAL INFO UNENCRYPTED **
 
-If you are uncomfortable with this then please e-mail your job application to david アット airtidy.com and let us know your github username.
+If you are uncomfortable with this then please e-mail your job application to jobs アット housecare.tokyo and let us know your github username.
 
 # Extra Credit
 
