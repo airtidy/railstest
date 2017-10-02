@@ -1,9 +1,26 @@
 <h1>Best girl site</h1>
-
 <% if !current_user %>
-	<p>Please <%= link_to "login", new_user_session_path %> and rank your best girl!</p>
+  <p>Please <%= link_to "login", new_user_session_path %> and rank your best girl!</p>
 
 <% end %>
 
 <p> Best girls are: </p>
 <p> ##Display best girl ranking here:## </p>
+<table>
+  <thead>
+    <tr>
+      <td><%= 'ID' %></td>
+      <td><%= 'Girl Name' %></td>
+      <td><%= 'Global Rank' %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @global_ranking.each_with_index do |ranking, i|%>
+      <tr>
+        <td><%= ranking.id %></td>
+        <td><%= ranking.name %></td>
+        <td><%= i + 1 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
