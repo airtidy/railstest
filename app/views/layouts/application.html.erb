@@ -12,18 +12,14 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <ul>
-
-    <li><%= link_to "Home", root_path %></li>
+    <span><%= link_to "Home", root_path, class: 'navbutton' %></span>
     <% if !current_user %>
-        <li><%= link_to "Login", new_user_session_path %></li>
+        <span><%= link_to "Login", new_user_session_path, class: 'navbutton' %></span>
     <% else %>
 
-        <li><%= link_to "Rankings", ranking_view_path %></li>
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <span><%= link_to "Rankings", ranking_view_path, class: 'navbutton' %></span>
+        <span><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbutton' %></span>
     <% end %>
-
-    </ul>
 
     <%= yield %>
   </body>

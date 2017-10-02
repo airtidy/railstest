@@ -19,7 +19,7 @@ class RankingController < ApplicationController
       ranking = current_user.rankings.where(girl_id: girl_id).first
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Girl.all.count
-        rank = current_user.rankings.count
+        rank = current_user.rankings.count + 1
         ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
 
       elsif ranking.rank == 1 && direction == "up"
@@ -47,7 +47,6 @@ class RankingController < ApplicationController
 
         end
 
-
       end
 
       redirect_to :ranking_view
@@ -55,5 +54,6 @@ class RankingController < ApplicationController
   end
 
   def view
+    @rankings_count = current_user.rankings.count
   end
 end

@@ -1,3 +1,45 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.movebutton {
+  font-family: Arial;
+  color: blue;
+  padding: 3px 3px;
+  text-decoration: none;
+}
+
+.submitbutton {
+  font-family: Arial;
+  color: blue;
+  width: 80px;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  background-color: red;
+}
+
+a:active {
+  background-color: yellow;
+}
+
+p, li {
+  font-family: Arial;
+  font-size: 120%;
+  line-height: 1.2;
+}
+
+td {
+  font-family: Arial;
+  font-size: 120%;
+  min-width: 60px;
+}
+
+th {
+  font-size: 130%;
+}

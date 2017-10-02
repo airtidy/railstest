@@ -1,22 +1,30 @@
+<div class="maindiv">
+  <h1>Your best girl rankings</h1>
 
-<h1>Your best girl rankings</h1>
-
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Rank</th>
-		<th>Move Up</th>
-		<th>Move Down</th>
-	</tr>
-
-	<% current_user.ranking_info.each do |girl| %>
-		<tr>
-			<td><%= girl[:name] %></td>
-			<td><%= girl[:rank] == 0 ? "?" : girl[:rank] %></td>
-
-			<td><%= link_to "Up", ranking_edit_path(girl: girl[:id], direction: "up"), method: :post %></td>
-			<td><%= link_to "Down", ranking_edit_path(girl: girl[:id], direction: "down"), method: :post %></td>
-		</tr>
-	<% end %>
-
-</table>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Rank</th>
+    </tr>
+    <% current_user.ranking_info.each.with_index do |girl, line| %>
+      <% if line == @rankings_count   # Put separator between ranked and unranked girls. %>
+        <tr><td><hr></td></tr>
+      <% end %>
+      <% rank = girl[:rank] %>
+      <tr>
+        <td width="200px"><%= girl[:name] %></td>
+        <td align="center"><%= rank == 0 ? "?" : rank %></td>
+        <% if rank != 1 %>
+          <td align="center"><%= link_to "Up", ranking_edit_path(girl: girl[:id], direction: "up"), method: :post, class: 'movebutton' %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <% if rank > 0 && rank < @rankings_count %>
+          <td><%= link_to "Down", ranking_edit_path(girl: girl[:id], direction: "down"), method: :post, class: 'movebutton' %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
