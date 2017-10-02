@@ -40,10 +40,12 @@ class RankingController < ApplicationController
         elsif direction == "down"
           # swap with lower ranker
           lower = current_user.rankings.where(rank: ranking.rank.to_i + 1).first
-          lower.rank = current.rank
-          current.rank = current.rank + 1
-          lower.save!
-          current.save!
+          if lower.present?
+            lower.rank = current.rank
+            current.rank = current.rank + 1
+            lower.save!
+            current.save!
+          end
 
         end
 
