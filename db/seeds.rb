@@ -6,23 +6,23 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Girl.create(name: "Kurosawa Dia", age: 17)
-Girl.create(name: "Matsuura Kanan", age: 17)
-Girl.create(name: "Ohara Mari", age: 18)
+Nesoberi.create(name: "Kurosawa Dia", age: 17)
+Nesoberi.create(name: "Matsuura Kanan", age: 17)
+Nesoberi.create(name: "Ohara Mari", age: 18)
 
-Girl.create(name: "Watanabe You", age: 17)
-Girl.create(name: "Takami Chika", age: 17)
-Girl.create(name: "Sakurauchi Riko", age: 17)
+Nesoberi.create(name: "Watanabe You", age: 17)
+Nesoberi.create(name: "Takami Chika", age: 17)
+Nesoberi.create(name: "Sakurauchi Riko", age: 17)
 
-Girl.create(name: "Kunikida Hanamaru", age: 15)
-Girl.create(name: "Kurosawa Ruby", age: 16)
-Girl.create(name: "Tsushima Yoshiko", age: 16)
+Nesoberi.create(name: "Kunikida Hanamaru", age: 15)
+Nesoberi.create(name: "Kurosawa Ruby", age: 16)
+Nesoberi.create(name: "Tsushima Yoshiko", age: 16)
 
 for i in 1..30 do
 	user = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
 
 	rankings = (1..9).to_a.shuffle
-	Girl.all.each do |girl|
-		Ranking.create(girl: girl, user: user, rank: rankings[girl.id-1])
+	Nesoberi.all.each do |nesoberi|
+		Ranking.create(nesoberi: nesoberi, user: user, rank: rankings[nesoberi.id-1])
 	end
 end

@@ -5,29 +5,29 @@ class RankingController < ApplicationController
   def edit
     if request.post?
 
-      girl_id = params[:girl]
+      nesoberi_id = params[:nesoberi]
       direction = params[:direction]
 
-      return if !girl_id || !direction
+      return if !nesoberi_id || !direction
 
       # cases:
-      # 1. girl is not ranked
-      # 2. girl is at top and going up (cannot go)
-      # 3. girl is at bottom and going down (cannot go)
-      # 4. girl is changing rank
+      # 1. nesoberi is not ranked
+      # 2. nesoberi is at top and going up (cannot go)
+      # 3. nesoberi is at bottom and going down (cannot go)
+      # 4. nesoberi is changing rank
 
-      ranking = current_user.rankings.where(girl_id: girl_id).first
+      ranking = current_user.rankings.where(nesoberi_id: nesoberi_id).first
 
-      if ranking == nil || ranking.rank < 1 || ranking.rank > Girl.all.count
+      if ranking == nil || ranking.rank < 1 || ranking.rank > Nesoberi.all.count
         rank = current_user.rankings.count
-        ranking = Ranking.create(girl_id: girl_id, user: current_user, rank: rank)
+        ranking = Ranking.create(nesoberi_id: nesoberi_id, user: current_user, rank: rank)
 
       elsif ranking.rank == 1 && direction == "up"
 
       elsif ranking.rank == current_user.rankings.count && direction == "down"
 
       else
-        current = current_user.rankings.where(girl_id: girl_id).first
+        current = current_user.rankings.where(nesoberi_id: nesoberi_id).first
 
         if direction == "up"
           # swap with upper ranker

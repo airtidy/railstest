@@ -2,7 +2,7 @@
 
 Welcome to the HouseCare Programming Test!
 
-This website is a simple website to rank girls from the hit anime 'Love Live! School Idol Project.' People can create an account, login and change the ranks of the girls according to whom they like the most.
+This website is a simple website to rank nesoberis from the hit anime 'Love Live! School Idol Project.' People can create an account, login and change the ranks of the nesoberis according to whom they like the most.
 
 # Getting Started
 
@@ -20,7 +20,7 @@ cd railstest
 bundle install
 rake db:create
 rake db:migrate
-rake db:seed # this will seed the base with random best girl values
+rake db:seed # this will seed the base with random best nesoberi values
 ```
 
 Run the following command to start the server
@@ -33,9 +33,9 @@ You should see the website on http://localhost:3000.
 
 # The Problem
 
-When you see the front page, you will see a `##Display best girl ranking here:##`. Please implement this view.
+When you see the front page, you will see a `##Display best nesoberi ranking here:##`. Please implement this view.
 
-This view needs to display the overall (global) ranking for all the girls according to the rankings set by every user, so you will need to implement the calculation and display the result on the front page. (Make sure to write tests too!)
+This view needs to display the overall (global) ranking for all the nesoberis according to the rankings set by every user, so you will need to implement the calculation and display the result on the front page. (Make sure to write tests too!)
 
 Make a pull request with your modifications.
 
@@ -58,12 +58,12 @@ If you are uncomfortable with this then please e-mail your job application to jo
 
 # Extra Credit
 
-There are issues with the code that allows people to set their best girl. Find out what they are and fix them.
+There are issues with the code that allows people to set their best nesoberi. Find out what they are and fix them.
 
 There are many other problems with the site, you do not need to fix them but spotting them would be really nice.
 
 # TL;DR
 
-Ruby is best girl anyway.
+Ruby is best nesoberi too.
 
-![ruby_on_rails](https://user-images.githubusercontent.com/874280/27848793-d4c76a40-6182-11e7-832a-116ca89ea40d.png)
+![ruby_on_rails](https://user-images.githubusercontent.com/874280/31323714-aca03d62-ace6-11e7-9f59-14f52f66eea7.png)

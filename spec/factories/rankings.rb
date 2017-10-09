@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :ranking do
-    girl
+    nesoberi
     user
     rank 0
   end

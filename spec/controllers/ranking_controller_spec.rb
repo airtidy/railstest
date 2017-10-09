@@ -18,12 +18,12 @@ RSpec.describe RankingController, type: :controller do
   end
 
   describe "POST #edit" do
-    it "gives unranked girl a rank" do
-      girl = FactoryGirl.create(:girl)
+    it "gives unranked nesoberi a rank" do
+      nesoberi = FactoryGirl.create(:nesoberi)
       user = FactoryGirl.create(:user)
       sign_in user
 
-      post :edit, params: { girl: girl.id , direction: "up" }
+      post :edit, params: { nesoberi: nesoberi.id , direction: "up" }
       expect(response).to have_http_status(:found)
 
       expect( user.rankings.count ).to eq(1)

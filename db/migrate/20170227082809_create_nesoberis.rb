@@ -1,6 +1,6 @@
 class CreateGirls < ActiveRecord::Migration[5.0]
   def change
-    create_table :girls do |t|
+    create_table :nesoberis do |t|
       t.string :name
       t.integer :age
 
@@ -8,3 +8,4 @@ class CreateGirls < ActiveRecord::Migration[5.0]
     end
   end
 end
+
