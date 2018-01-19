@@ -6,4 +6,18 @@
 <% end %>
 
 <p> Best nesoberis are: </p>
-<p> ##Display best nesoberi ranking here:## </p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Rank</th>
+  </tr>
+
+  <% current_user.ranking_info.each do |nesoberi| %>
+    <tr>
+      <td><%= nesoberi[:name] %></td>
+      <td><%= nesoberi[:rank] == 0 ? "?" : nesoberi[:rank] %></td>
+    </tr>
+  <% end %>
+
+</table>
