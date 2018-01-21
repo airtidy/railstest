@@ -1,22 +1,27 @@
+<div class="jumbotron text-center">
+  <h1>Your nesoberi rankings</h1>
+</div>
 
-<h1>Your nesoberi rankings</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <table class="table">
+      	<tr>
+      		<th>Name</th>
+      		<th>Rank</th>
+      		<th>Change Rank</th>
+      	</tr>
 
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Rank</th>
-		<th>Move Up</th>
-		<th>Move Down</th>
-	</tr>
+      	<% current_user.ranking_info.each do |nesoberi| %>
+      		<tr>
+      			<td><%= nesoberi[:name] %></td>
+      			<td><%= nesoberi[:rank] == 0 ? "?" : nesoberi[:rank] %></td>
 
-	<% current_user.ranking_info.each do |nesoberi| %>
-		<tr>
-			<td><%= nesoberi[:name] %></td>
-			<td><%= nesoberi[:rank] == 0 ? "?" : nesoberi[:rank] %></td>
+      			<td><%= link_to ranking_edit_path(nesoberi: nesoberi[:id], direction: "up"), method: :post do %><i class="fa fa-arrow-up" aria-hidden="true"></i><% end %><br><%= link_to ranking_edit_path(nesoberi: nesoberi[:id], direction: "down"), method: :post do %><i class="fa fa-arrow-down" aria-hidden="true"></i><% end %></td>
+      		</tr>
+      	<% end %>
 
-			<td><%= link_to "Up", ranking_edit_path(nesoberi: nesoberi[:id], direction: "up"), method: :post %></td>
-			<td><%= link_to "Down", ranking_edit_path(nesoberi: nesoberi[:id], direction: "down"), method: :post %></td>
-		</tr>
-	<% end %>
-
-</table>
+      </table>
+    </div>
+  </div>
+</div>

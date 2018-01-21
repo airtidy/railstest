@@ -1,28 +1,34 @@
-<h1>Best nesoberi site</h1>
+<div class="jumbotron text-center">
+  <h1>Best nesoberi site</h1>
+</div>
 
 <% if !current_user %>
 	<p>Please <%= link_to "login", new_user_session_path %> and rank your best nesoberi!</p>
-
 <% end %>
 
-<p> Best nesoberis are: </p>
-
-<table>
-  <tr>
-    <th>Global<br>Ranking</th>
-    <th>Name</th>
-  </tr>
-  <% Nesoberi.global_ranking.each_with_index do |nesoberi, index| %>
-    <tr>
-      <td>
-        <% if Nesoberi.global_ranking[index][1] == Nesoberi.global_ranking[index -1][1] %>
-          <!-- If two nesoberis are tied, they should have the same rank -->
-          <%= index %>
-        <% else %>
-          <%= index + 1 %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2> Best nesoberis are: </h1>
+      <table class="table">
+        <tr>
+          <th>Global Ranking</th>
+          <th>Name</th>
+        </tr>
+        <% Nesoberi.global_ranking.each_with_index do |nesoberi, index| %>
+          <tr>
+            <td>
+              <% if Nesoberi.global_ranking[index][1] == Nesoberi.global_ranking[index -1][1] %>
+                <!-- If two nesoberis are tied, they should have the same rank -->
+                <%= index %>
+              <% else %>
+                <%= index + 1 %>
+              <% end %>
+            </td>
+            <td><%= nesoberi[0] %></td>
+          </tr>
         <% end %>
-      </td>
-      <td><%= nesoberi[0] %></td>
-    </tr>
-  <% end %>
-</table>
+      </table>
+    </div>
+  </div>
+</div>
