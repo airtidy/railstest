@@ -7,3 +7,10 @@
 
 <p> Best nesoberis are: </p>
 <p> ##Display best nesoberi ranking here:## </p>
+<% @ranking_hash.each_with_index do |(k, v), i| %>
+<p>
+<%= i+ 1 %>
+<%=": " + v[:nesoberi_name] %>
+</p>
+<% end %>
+
