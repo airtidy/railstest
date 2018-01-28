@@ -16,11 +16,16 @@ class RankingController < ApplicationController
       # 3. nesoberi is at bottom and going down (cannot go)
       # 4. nesoberi is changing rank
 
-      ranking = current_user.rankings.where(nesoberi_id: nesoberi_id).first
+      ranking = current_user.rankings.order({ rank: :asc }).where(nesoberi_id: nesoberi_id).first
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Nesoberi.all.count
         rank = current_user.rankings.count
-        ranking = Ranking.create(nesoberi_id: nesoberi_id, user: current_user, rank: rank)
+        if ranking == nil
+          ranking = Ranking.create(nesoberi_id: nesoberi_id, user: current_user, rank: rank)
+        else
+          ranking.rank = rank
+          ranking.save
+        end
 
       elsif ranking.rank == 1 && direction == "up"
 

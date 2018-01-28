@@ -6,4 +6,28 @@
 <% end %>
 
 <p> Best nesoberis are: </p>
-<p> ##Display best nesoberi ranking here:## </p>
+<table>
+<tr>
+	<thead>
+		<tr>
+		<th> Best Ranking</th>
+		<th> Nesoberi Name </th>
+		<th> Ranking Score </th>
+		</tr>
+	</thead>
+<% @best_ranking.each_with_index do |(k, v), i| %>
+	<tr>
+		<td>
+			<%= i + 1 %>
+		</td>
+		<td>
+			<%= v[:nesoberi_name] %>
+		</td>
+		<td>
+			<%= v[:rank].to_s %>
+		</td>
+	</tr>
+<% end %>
+
+</table>
+
