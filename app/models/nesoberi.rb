@@ -4,7 +4,7 @@ class Nesoberi < ApplicationRecord
 	validates :name, presence: true
 
 	def self.global_rankings
-		all.sort_by(&:global_rank).reverse
+		all.sort_by(&:global_rank)
 	end
 
 	def rank(user)
@@ -14,5 +14,15 @@ class Nesoberi < ApplicationRecord
 
 	def global_rank
 		rankings.all.pluck(:rank).sum
+	end
+
+	def vote_up(user)
+		ranking = rankings.where(user: user).first
+		ranking.vote_up
+	end
+
+	def vote_down(user)
+		ranking = rankings.where(user: user).first
+		ranking.vote_down
 	end
 end

@@ -6,4 +6,14 @@ class Ranking < ApplicationRecord
   validates :nesoberi, :user, presence: true
   validates_uniqueness_of :nesoberi_id, scope: :user_id
 
+  def vote_down
+    self.update(rank: (rank + 1))
+  end
+
+  def vote_up
+    if rank > 0
+      self.update(rank: (rank - 1))
+    end
+  end
+
 end

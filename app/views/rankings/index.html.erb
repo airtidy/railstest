@@ -1,0 +1,22 @@
+
+<h1>Your nesoberi rankings</h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Rank</th>
+		<th>Move Up</th>
+		<th>Move Down</th>
+	</tr>
+
+	<% @nesoberis.each do |nesoberi| %>
+		<tr>
+			<td><%= nesoberi[:name] %></td>
+			<td><%= nesoberi[:rank] %></td>
+
+			<td><%= link_to "Up", vote_up_ranking_path(nesoberi[:id]), method: :post %></td>
+			<td><%= link_to "Down", vote_down_ranking_path(nesoberi[:id]), method: :post %></td>
+		</tr>
+	<% end %>
+
+</table>
