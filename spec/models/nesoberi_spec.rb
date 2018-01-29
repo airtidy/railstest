@@ -28,6 +28,7 @@ RSpec.describe Nesoberi, type: :model do
 	describe "class methods" do
 		describe ".global_rankings" do
 			it "is in order of highest to lowest rank" do
+				Nesoberi.destroy_all
 				nesoberis = create_list(:nesoberi, 3)
 				rank = 1
 				nesoberis.each do |nesoberi|
@@ -35,8 +36,11 @@ RSpec.describe Nesoberi, type: :model do
 					rank += 1
 				end
 				rankings = Nesoberi.all.sort_by(&:global_rank).reverse
-				expect(rankings.length).to eq(3)
-				expect(Nesoberi.global_rankings.first).to eq(rankings.first)
+				expect(rankings.length).to eq(3) #ensure they exsist
+				global_rankings = Nesoberi.global_rankings
+				expect(global_rankings.first.global_rank).to be > global_rankings.last.global_rank
+				expect(global_rankings.first).to eq(rankings.first)
+				expect(global_rankings.last).to eq(rankings.last)
 			end
 		end
 	end
