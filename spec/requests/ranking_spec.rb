@@ -10,7 +10,7 @@ RSpec.describe "Ranking", type: :request do
 
     it "can view ranking if signed in" do
 
-    	sign_in FactoryGirl.create(:user)
+    	sign_in FactoryBot.create(:user)
     	
       get ranking_view_path	
       expect(response).to have_http_status(200)
