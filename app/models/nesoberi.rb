@@ -3,11 +3,7 @@ class Nesoberi < ApplicationRecord
 	has_many :rankings
 
 	def rank(user)
-		ranking = Ranking.where(user: user, nesoberi: self).first
-		if !ranking
-			0
-		else
-			ranking.rank
-		end
+		ranking = rankings.where(user: user).first
+		ranking.present? ? ranking.rank : 0
 	end
 end
