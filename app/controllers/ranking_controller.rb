@@ -19,7 +19,7 @@ class RankingController < ApplicationController
       ranking = current_user.rankings.where(nesoberi_id: nesoberi_id).first
 
       if ranking == nil || ranking.rank < 1 || ranking.rank > Nesoberi.all.count
-        rank = current_user.rankings.count
+        rank = current_user.rankings.count + 1
         ranking = Ranking.create(nesoberi_id: nesoberi_id, user: current_user, rank: rank)
 
       elsif ranking.rank == 1 && direction == "up"
