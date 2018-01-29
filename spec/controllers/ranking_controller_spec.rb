@@ -4,7 +4,7 @@ RSpec.describe RankingController, type: :controller do
 
   describe "GET #view" do
     it "returns http success with logged in user" do
-      sign_in FactoryBot.create(:user)
+      sign_in create(:user)
 
       get :view
       expect(response).to have_http_status(:success)
@@ -19,8 +19,8 @@ RSpec.describe RankingController, type: :controller do
 
   describe "POST #edit" do
     it "gives unranked nesoberi a rank" do
-      nesoberi = FactoryBot.create(:nesoberi)
-      user = FactoryBot.create(:user)
+      nesoberi = create(:nesoberi)
+      user = create(:user)
       sign_in user
 
       post :edit, params: { nesoberi: nesoberi.id , direction: "up" }

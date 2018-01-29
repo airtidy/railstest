@@ -6,4 +6,15 @@
 <% end %>
 
 <p> Best nesoberis are: </p>
-<p> ##Display best nesoberi ranking here:## </p>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Rank</th>
+	</tr>
+	<% @nesoberis.each do |nesoberi| %>
+		<tr>
+			<td><%= nesoberi.name %></td>
+			<td><%= nesoberi.global_rank %></td>
+		</tr>
+	<% end %>
+</table>
