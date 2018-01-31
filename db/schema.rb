@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20170227082838) do
     t.integer  "nesoberi_id"
     t.integer  "user_id"
     t.integer  "rank"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["nesoberi_id"], name: "index_rankings_on_nesoberi_id", using: :btree
     t.index ["user_id"], name: "index_rankings_on_user_id", using: :btree
   end

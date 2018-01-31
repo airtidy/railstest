@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :ranking do
-    nesoberi
-    user
-    rank 0
+    association :nesoberi
+    association :user
+    rank 1
   end
 end
