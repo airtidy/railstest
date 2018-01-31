@@ -76,4 +76,41 @@ RSpec.describe Nesoberi, type: :model do
 			expect(@nesoberi.global_rank).to eq(6)
 		end
 	end
+
+	describe "#vote_up" do
+		it "updates the vote for the ranking found" do
+			ranking = create(:ranking, nesoberi: @nesoberi, rank: 3)
+			current_rank = @nesoberi.rank(ranking.user)
+			@nesoberi.vote_up(ranking.user)
+			expect(@nesoberi.rank(ranking.user)).to eq(4)
+		end
+
+		it "creates a new ranking if no ranking exsists" do
+			user = create(:user)
+			expect(@nesoberi.rankings.where(user: user)).to be_blank
+			expect(@nesoberi.rank(user)).to eq(0)
+			@nesoberi.vote_up(user)
+			expect(@nesoberi.rank(user)).to eq(1)
+			expect(@nesoberi.rankings.where(user: user).length).to eq(1)
+		end
+	end
+
+
+		describe "#vote_down" do
+			it "updates the vote for the ranking found" do
+				ranking = create(:ranking, nesoberi: @nesoberi, rank: 3)
+				current_rank = @nesoberi.rank(ranking.user)
+				@nesoberi.vote_down(ranking.user)
+				expect(@nesoberi.rank(ranking.user)).to eq(2)
+			end
+
+			it "creates a new ranking if no ranking exsists" do
+				user = create(:user)
+				expect(@nesoberi.rankings.where(user: user)).to be_blank
+				expect(@nesoberi.rank(user)).to eq(0)
+				@nesoberi.vote_down(user)
+				expect(@nesoberi.rank(user)).to eq(0)
+				expect(@nesoberi.rankings.where(user: user).length).to eq(1)
+			end
+		end
 end

@@ -41,7 +41,7 @@ RSpec.describe Ranking, type: :model do
 			end
 
 			it "must be an integer" do
-				["ABC", 1.34, 000].each do |rank|
+				["ABC", 1.34].each do |rank|
 					@ranking.rank = rank
 					expect(@ranking.valid?).to be(false)
 				end
@@ -99,6 +99,41 @@ RSpec.describe Ranking, type: :model do
 				expect(@ranking.valid?).to be false
 				expect(@ranking.errors.messages[:nesoberi_id]).to include("has already been taken")
 			end
+		end
+	end
+
+	describe "#vote_up" do
+		it "should add one if there is no rank" do
+			ranking = build(:ranking, rank: nil)
+			expect(ranking.rank).to be nil
+			ranking.vote_up
+			expect(ranking.rank).to be(1)
+		end
+
+		it "should add one to any rank number" do
+			ranking = create(:ranking, rank: 300)
+			ranking.vote_up
+			expect(ranking.rank).to eq(301)
+		end
+	end
+
+	describe "#vote_down" do
+		it "should subtract one from any rank > 0" do
+			ranking = create(:ranking, rank: 300)
+			ranking.vote_down
+			expect(ranking.rank).to eq(299)
+		end
+
+		it "should not go lower than 0" do
+			ranking = create(:ranking, rank: 0)
+			ranking.vote_down
+			expect(ranking.rank).to eq(0)
+		end
+
+		it "should return 0 for a new object" do
+			ranking = build(:ranking, rank: nil)
+			ranking.vote_down
+			expect(ranking.rank).to eq(0)
 		end
 	end
 end

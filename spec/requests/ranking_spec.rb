@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Ranking", type: :request do
   describe "GET /ranking" do
     it "cannot view ranking if not signed in" do
-      get ranking_view_path
+      get rankings_path
       expect(response).to have_http_status(302)
 
     end
@@ -12,7 +12,7 @@ RSpec.describe "Ranking", type: :request do
 
     	sign_in create(:user)
 
-      get ranking_view_path
+      get rankings_path
       expect(response).to have_http_status(200)
 
     end
